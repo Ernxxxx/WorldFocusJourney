@@ -1,8 +1,8 @@
 import { createClient } from '@/lib/supabase/server'
 import { redirect } from 'next/navigation'
-import MainContent from '@/components/MainContent'
+import HistoryContent from '@/components/HistoryContent'
 
-export default async function HomePage() {
+export default async function HistoryPage() {
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
 
@@ -10,5 +10,5 @@ export default async function HomePage() {
     redirect('/auth/login')
   }
 
-  return <MainContent userId={user.id} />
+  return <HistoryContent userId={user.id} />
 }
